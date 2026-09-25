@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Q KINGDOM — Follow @MuazXinthi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="hud">
+      <div class="hud-left">
+        <span>PLAYER <b id="hud-user">GUEST</b></span>
+        <span>COINS <b id="hud-coins">0</b></span>
+        <span class="lives">M <span id="hud-lives">x3</span></span>
+      </div>
+      <div class="hud-right">
+        <span>TYPE <b id="hud-type">0/100</b></span>
+        <button type="button" id="btn-map">MAP</button>
+        <button type="button" id="btn-logout">QUIT</button>
+      </div>
+    </header>
+
+    <section id="scene-title" class="scene active sky-bg">
+      <div class="ground-strip"></div>
+      <h1 class="logo">Q <span>KINGDOM</span></h1>
+      <p class="tagline">A brick-and-pipe skill grind.<br />Follow @MuazXinthi. Login with X.<br />100 typing flags, then every other Q.</p>
+      <div class="menu">
+        <button class="btn red" id="btn-play" type="button">PRESS START</button>
+        <button class="btn blue" id="btn-x" type="button">LOGIN WITH X</button>
+        <button class="btn ghost" id="btn-how" type="button">HOW TO PLAY</button>
+      </div>
+      <p class="fine">RuneScape-style skills. Super Mario overworld. Local save on this browser.</p>
+    </section>
+
+    <section id="scene-gate" class="scene sky-bg">
+      <div class="ground-strip"></div>
+      <div class="panel">
+        <h2>CASTLE GATE</h2>
+        <p>Only subjects of @MuazXinthi may grind inside. Login, follow, then the pipes open.</p>
+        <p id="oauth-note" class="fine" style="color:#1a1208;text-shadow:none">Real Sign in with X lights up when a Client ID is set in js/app.js.</p>
+        <label class="field">
+          X HANDLE
+          <input id="handle-input" maxlength="15" placeholder="yourhandle" autocomplete="username" />
+        </label>
+        <button class="btn blue" id="btn-handle" type="button">SET PLAYER</button>
+        <button class="btn red" id="btn-follow" type="button">FOLLOW @MUAZXINTHI</button>
+        <label class="check">
+          <input type="checkbox" id="did-follow" />
+          <span>I opened the follow intent and followed @MuazXinthi.</span>
+        </label>
+        <button class="btn green" id="btn-confirm" type="button">CONFIRM FOLLOW</button>
+        <div id="follow-status" class="status">FOLLOW CHECK: LOCKED.</div>
+        <button class="btn" id="btn-enter" type="button" disabled>ENTER KINGDOM</button>
+      </div>
+    </section>
+
+    <section id="scene-world" class="scene sky-bg">
+      <div class="ground-strip"></div>
+      <div class="world-head">
+        <h2>OVERWORLD</h2>
+        <p id="world-sub">Pick a kingdom.</p>
+      </div>
+      <div id="kingdoms" class="kingdoms"></div>
+      <div id="skills" class="skills"></div>
+    </section>
+
+    <section id="scene-levels" class="scene sky-bg">
+      <div class="ground-strip"></div>
+      <div class="world-head">
+        <h2>TYPE KINGDOM</h2>
+        <p>Pipes 1–100. Clear in order. Gold = flag captured.</p>
+        <button class="btn ghost" id="btn-levels-back" type="button" style="min-width:0;margin-top:10px">BACK</button>
+      </div>
+      <div id="level-grid" class="level-grid"></div>
+    </section>
+
+    <section id="scene-type" class="scene sky-bg">
+      <div class="ground-strip"></div>
+      <div class="type-wrap">
+        <div class="world-head">
+          <h2 id="type-title">WORLD 1-01</h2>
+          <button class="btn ghost" id="btn-type-back" type="button" style="min-width:0">PIPES</button>
+        </div>
+        <div class="stats-row">
+          <div class="stat">NEED WPM <b id="need-wpm">25</b></div>
+          <div class="stat">NEED ACC <b id="need-acc">86%</b></div>
+          <div class="stat">NOW WPM <b id="live-wpm">0</b></div>
+          <div class="stat">NOW ACC <b id="live-acc">100%</b></div>
+        </div>
+        <div id="passage" class="passage"></div>
+        <input id="type-input" class="type-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="type the gold letter…" />
+        <p class="hint">Spaces show as dots in the passage. Timer starts on first key. Miss the flag and you lose a life.</p>
+      </div>
+    </section>
+
+    <section id="scene-quiz" class="scene sky-bg">
+      <div class="ground-strip"></div>
+      <div class="quiz-wrap">
+        <div class="world-head">
+          <h2 id="quiz-title">IQ TRIAL</h2>
+          <p id="quiz-progress">1 / 8</p>
+          <button class="btn ghost" id="btn-quiz-back" type="button" style="min-width:0;margin-top:8px">MAP</button>
+        </div>
+        <div class="q-card">
+          <h3 id="q-text">Question</h3>
+          <div id="choices" class="choices"></div>
+        </div>
+        <div id="quiz-result" class="result-banner hidden"></div>
+      </div>
+    </section>
+  </div>
+
+  <div id="modal" class="modal">
+    <div class="box">
+      <h3 id="m-title">!</h3>
+      <p id="m-body"></p>
+      <div id="m-actions" class="menu"></div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
